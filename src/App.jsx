@@ -1,453 +1,525 @@
+import { useState } from 'react'
 import './App.css'
 import projects from './data/projects'
 
 function App() {
+  const [activeProject, setActiveProject] = useState(null)
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <div className="app">
-      {/* Navbar */}
+
+      {/* ================= NAVBAR ================= */}
       <nav className="navbar">
-        <div className="container nav-content">
-          <a href="#home" className="logo">
-            <span>AR</span>
+        <div className="nav-container">
+
+          <a
+            href="#top"
+            className="logo"
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+          >
+            <span className="logo-mark">MA</span>
+            <span className="logo-text">Mochammad Abdurobby</span>
           </a>
 
           <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('projects')
+              }}
+            >
+              Projects
+            </a>
+
+            <a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('about')
+              }}
+            >
+              About
+            </a>
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection('contact')
+              }}
+            >
+              Contact
+            </a>
+
+            <a
+              href="/CV-Mochammad-Abdurobby.pdf"
+              className="nav-cv"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download CV
+            </a>
           </div>
 
-          <a href="#contact" className="nav-button">
-            Let's Talk 👋
-          </a>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section id="home" className="hero">
-        <div className="container hero-content">
-          <div className="hero-text">
-            <div className="welcome-badge">
-              👋 Hello, I'm
-            </div>
 
-            <h1>
-              Mochammad
-              <span> Abdurobby</span>
-            </h1>
+      {/* ================= MAIN ================= */}
+      <main id="top">
 
-            <h2>
-              IT Staff · Web Application Developer · System Administrator (FreeBSD)
-            </h2>
+        {/* ================= HERO ================= */}
+        <section className="hero-section">
 
-            <p className="hero-description">
-              IT Staff with more than 8 years of experience in web application
-              development, server administration, and IT infrastructure support.
+          <div className="hero-content">
+
+            <p className="hero-eyebrow">
+              IT · WEB · SYSTEMS · IOT
             </p>
 
-            <div className="hero-buttons">
-              <a href="#projects" className="btn-primary">
-                View My Work →
+            <h1>
+              I build systems
+              <span> that make business operations work better.</span>
+            </h1>
+
+            <p className="hero-description">
+              A showcase of web applications, warehouse systems,
+              IoT monitoring platforms, and business solutions
+              developed for real-world operations.
+            </p>
+
+            <div className="hero-actions">
+
+              <button
+                className="btn btn-primary"
+                onClick={() => scrollToSection('projects')}
+              >
+                Explore Projects
+                <span>→</span>
+              </button>
+
+              <a
+                href="/CV-Mochammad-Abdurobby.pdf"
+                className="btn btn-secondary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download CV
               </a>
 
-              <a href="#contact" className="btn-secondary">
-                Contact Me
-              </a>
             </div>
 
-            <div className="hero-stats">
-              <div className="stat">
-                <strong>8+</strong>
-                <span>Years Experience</span>
-              </div>
-
-              <div className="stat">
-                <strong>6+</strong>
-                <span>Major Projects</span>
-              </div>
-
-              <div className="stat">
-                <strong>∞</strong>
-                <span>Curiosity</span>
-              </div>
-            </div>
           </div>
 
           <div className="hero-visual">
-            <div className="profile-card">
-              <div className="profile-decoration decoration-one"></div>
-              <div className="profile-decoration decoration-two"></div>
 
-              <div className="profile-avatar">
-                AR
+            <div className="hero-card">
+
+              <div className="hero-card-header">
+                <span className="status-dot"></span>
+                <span>Systems I Build</span>
               </div>
 
-              <div className="profile-info">
-                <h3>Mochammad Abdurobby</h3>
-                <p>IT Professional</p>
+              <div className="system-flow">
+
+                <div className="flow-item">
+                  <span className="flow-icon">🌐</span>
+                  <span>Web Applications</span>
+                </div>
+
+                <div className="flow-line"></div>
+
+                <div className="flow-item">
+                  <span className="flow-icon">📱</span>
+                  <span>Mobile & Scanner</span>
+                </div>
+
+                <div className="flow-line"></div>
+
+                <div className="flow-item">
+                  <span className="flow-icon">⚙️</span>
+                  <span>IoT & Monitoring</span>
+                </div>
+
+                <div className="flow-line"></div>
+
+                <div className="flow-item">
+                  <span className="flow-icon">🖥️</span>
+                  <span>Infrastructure</span>
+                </div>
+
               </div>
 
-              <div className="profile-tags">
-                <span>Laravel</span>
-                <span>React</span>
-                <span>FreeBSD</span>
-              </div>
             </div>
 
-            <div className="floating-card card-code">
-              💻 Web Developer
-            </div>
-
-            <div className="floating-card card-server">
-              🖥️ System Admin
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="section">
-        <div className="container">
-          <div className="section-heading">
-            <span>01 — ABOUT ME</span>
-            <h2>
-              Technology should make
-              <strong> things better.</strong>
-            </h2>
           </div>
 
-          <div className="about-content">
-            <p>
-              I am an IT Staff with more than 8 years of experience in web
-              application development, server administration, and IT
-              infrastructure support.
-            </p>
+        </section>
 
-            <p>
-              I have experience building and maintaining web applications using
-              PHP Native, Laravel, and CodeIgniter, as well as managing Microsoft
-              SQL Server and MySQL databases.
-            </p>
 
-            <p>
-              My experience also includes FreeBSD server administration,
-              Apache HTTP Server, PHP-FPM, Redis, MQTT, SSH, and PF Firewall.
-              I am also experienced in troubleshooting applications, servers,
-              networks, hardware, and software to support business operations.
-            </p>
-          </div>
-        </div>
-      </section>
-      {/* What I Do */}
-      <section className="section services-section">
-        <div className="container">
-          <div className="section-heading">
-            <span>02 — WHAT I DO</span>
+        {/* ================= PROJECTS ================= */}
+        <section id="projects" className="projects-section">
 
-            <h2>
-              From code to
-              <strong> production.</strong>
-            </h2>
-          </div>
+          <div className="section-header">
 
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-number">01</div>
-
-              <h3>Web Development</h3>
-
-              <p>
-                Developing and maintaining internal web applications using PHP
-                Native, Laravel, and CodeIgniter.
-              </p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-number">02</div>
-
-              <h3>Server Administration</h3>
-
-              <p>
-                Installing, configuring, and maintaining FreeBSD servers and
-                services used to support business applications.
-              </p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-number">03</div>
-
-              <h3>System Integration</h3>
-
-              <p>
-                Integrating applications with databases, IoT devices, MQTT,
-                APIs, and other business systems.
-              </p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-number">04</div>
-
-              <h3>IT Support & Troubleshooting</h3>
-
-              <p>
-                Troubleshooting applications, servers, networks, computers,
-                printers, scanners, and other IT infrastructure.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Experience */}
-      <section id="experience" className="section">
-        <div className="container">
-          <div className="section-heading">
-            <span>03 — EXPERIENCE</span>
-
-            <h2>
-              More than 8 years
-              <strong> in IT.</strong>
-            </h2>
-          </div>
-
-          <div className="experience-card">
-            <div className="experience-header">
-              <div>
-                <h3>IT Staff</h3>
-
-                <p className="experience-company">
-                  Current Company
-                </p>
-              </div>
-
-              <span className="experience-period">
-                July 2018 — Present
+            <div>
+              <span className="section-label">
+                Selected Work
               </span>
+
+              <h2>
+                Projects I Have Built
+              </h2>
             </div>
 
-            <div className="experience-content">
-              <p>
-                Responsible for web application development, server
-                administration, IT infrastructure support, and technical
-                troubleshooting to support business operations.
-              </p>
+            <p>
+              A collection of systems and applications
+              developed for real-world business operations.
+            </p>
 
-              <div className="experience-responsibilities">
-                <div>
-                  <span>01</span>
-                  <p>
-                    Develop and maintain internal web applications using PHP
-                    Native, Laravel, and CodeIgniter.
-                  </p>
-                </div>
-
-                <div>
-                  <span>02</span>
-                  <p>
-                    Analyze user requirements and develop new features based
-                    on operational needs.
-                  </p>
-                </div>
-
-                <div>
-                  <span>03</span>
-                  <p>
-                    Deploy applications using Git and maintain application
-                    environments.
-                  </p>
-                </div>
-
-                <div>
-                  <span>04</span>
-                  <p>
-                    Install, configure, and maintain FreeBSD servers and
-                    supporting services.
-                  </p>
-                </div>
-
-                <div>
-                  <span>05</span>
-                  <p>
-                    Manage Apache HTTP Server, PHP-FPM, Redis, MQTT, SSH,
-                    and PF Firewall.
-                  </p>
-                </div>
-
-                <div>
-                  <span>06</span>
-                  <p>
-                    Provide technical support for computers, printers,
-                    scanners, barcode scanners, networks, and users.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Skills */}
-      <section id="skills" className="section skills-section">
-        <div className="container">
-          <div className="section-heading">
-            <span>02 — MY SKILLS</span>
-            <h2>
-              What I use to
-              <strong> build.</strong>
-            </h2>
           </div>
 
-          <div className="skills-grid">
-            <div className="skill-card blue-card">
-              <div className="skill-icon">💻</div>
-
-              <h3>Web Development</h3>
-
-              <p>
-                Building full-stack web applications from frontend to backend.
-              </p>
-
-              <div className="skill-tags">
-                <span>PHP</span>
-                <span>Laravel</span>
-                <span>CodeIgniter</span>
-                <span>React.js</span>
-                <span>JavaScript</span>
-              </div>
-            </div>
-
-            <div className="skill-card yellow-card">
-              <div className="skill-icon">🗄️</div>
-
-              <h3>Database & Backend</h3>
-
-              <p>
-                Designing, managing, and integrating database systems and APIs.
-              </p>
-
-              <div className="skill-tags">
-                <span>SQL Server</span>
-                <span>MySQL</span>
-                <span>SQLite</span>
-                <span>REST API</span>
-              </div>
-            </div>
-
-            <div className="skill-card purple-card">
-              <div className="skill-icon">🖥️</div>
-
-              <h3>Server & Infrastructure</h3>
-
-              <p>
-                Building, configuring, and maintaining production server environments.
-              </p>
-
-              <div className="skill-tags">
-                <span>FreeBSD</span>
-                <span>Linux</span>
-                <span>Apache</span>
-                <span>Nginx</span>
-                <span>Redis</span>
-              </div>
-            </div>
-
-            <div className="skill-card green-card">
-              <div className="skill-icon">🔗</div>
-
-              <h3>System Integration</h3>
-
-              <p>
-                Connecting applications with devices, APIs, and business systems.
-              </p>
-
-              <div className="skill-tags">
-                <span>MQTT</span>
-                <span>IoT</span>
-                <span>ZKTeco</span>
-                <span>Git</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section id="projects" className="section">
-        <div className="container">
-          <div className="section-heading">
-            <span>03 — SELECTED PROJECTS</span>
-            <h2>
-              Things I've
-              <strong> built.</strong>
-            </h2>
-          </div>
 
           <div className="projects-grid">
+
             {projects.map((project) => (
-              <div className="project-card" key={project.id}>
+
+              <article
+                key={project.id}
+                className="project-card"
+                onClick={() => setActiveProject(project)}
+              >
+
                 <div className="project-image">
-                  {project.icon}
+
+                  {project.images?.length > 0 ? (
+
+                      <img
+                        src={project.images[0]}
+                        alt={project.title}
+                      />
+
+                    ) : (
+
+                    <div className="project-placeholder">
+
+                      <span className="project-icon">
+                        {project.icon}
+                      </span>
+
+                      <span className="placeholder-label">
+                        Project Preview
+                      </span>
+
+                    </div>
+
+                  )}
+
+                  <div className="project-overlay">
+                    <span>
+                      View Project →
+                    </span>
+                  </div>
+
                 </div>
+
 
                 <div className="project-content">
-                  <span className="project-category">
-                    {project.categoryLabel}
-                  </span>
 
-                  <h3>{project.title}</h3>
+                  <div className="project-meta">
 
-                  <p>{project.description}</p>
+                    <span className="project-category">
+                      {project.categoryLabel}
+                    </span>
+
+                    <span className="project-number">
+                      0{project.id}
+                    </span>
+
+                  </div>
+
+
+                  <h3>
+                    {project.title}
+                  </h3>
+
+
+                  <p>
+                    {project.description}
+                  </p>
+
 
                   <div className="project-tech">
-                    {project.technologies.map((technology) => (
-                      <span key={technology}>
-                        {technology}
+
+                    {project.technologies.map((tech) => (
+
+                      <span key={tech}>
+                        {tech}
                       </span>
+
                     ))}
+
                   </div>
+
                 </div>
-              </div>
+
+              </article>
+
             ))}
+
           </div>
-        </div>
-      </section>
 
-      {/* Contact */}
+        </section>
+
+
+        {/* ================= ABOUT ================= */}
+        <section id="about" className="about-section">
+
+          <div className="about-container">
+
+            <div className="section-header">
+
+              <span className="section-label">
+                About
+              </span>
+
+              <h2>
+                Building systems for real-world operations.
+              </h2>
+
+            </div>
+
+
+            <div className="about-content">
+
+              <p>
+                I design and develop practical software systems for real-world
+                business operations. My work includes web applications, warehouse
+                and scanning systems, IoT monitoring platforms, workflow systems,
+                and infrastructure solutions.
+              </p>
+
+
+              <a
+                href="/CV-Mochammad-Abdurobby.pdf"
+                className="btn btn-primary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download CV
+                <span>→</span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= CONTACT ================= */}
       <section id="contact" className="contact-section">
-        <div className="container contact-content">
-          <div className="contact-emoji">🚀</div>
 
-          <span>04 — LET'S CONNECT</span>
+        <div className="contact-container">
+
+          <span className="section-label">
+            Get In Touch
+          </span>
 
           <h2>
-            Have a project
-            <strong> in mind?</strong>
+            Let's build something useful.
           </h2>
 
           <p>
-            I am open to opportunities in IT, web application development,
-            and system administration.
+            Interested in discussing a project, collaboration,
+            or a software solution for your business?
           </p>
 
           <a
             href="mailto:abdurobby5@gmail.com"
-            className="btn-primary"
+            className="btn btn-primary"
           >
-            Let's Talk →
+            Contact Me
+            <span>→</span>
           </a>
+
         </div>
+
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container footer-content">
-          <p>© 2026 Mochammad Abdurobby</p>
+      </main>
 
-          <p>
-            Built with React.js ⚛️
+
+      {/* ================= FOOTER ================= */}
+      <footer className="footer">
+
+        <div className="footer-container">
+
+          <div className="footer-brand">
+
+            <span className="logo-mark">
+              MA
+            </span>
+
+            <span>
+              Mochammad Abdurobby
+            </span>
+
+          </div>
+
+
+          <div className="footer-links">
+
+            <a
+              href="https://github.com/robby55"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mochammad-abdurobby/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="mailto:abdurobby5@gmail.com"
+            >
+              Email
+            </a>
+
+          </div>
+
+
+          <p className="copyright">
+            © {new Date().getFullYear()} Mochammad Abdurobby.
+            All rights reserved.
           </p>
+
         </div>
+
       </footer>
+
+
+      {/* ================= PROJECT MODAL ================= */}
+      {activeProject && (
+
+        <div
+          className="project-modal"
+          onClick={() => setActiveProject(null)}
+        >
+
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              className="modal-close"
+              onClick={() => setActiveProject(null)}
+            >
+              ×
+            </button>
+
+
+            <div className="modal-image">
+
+              {activeProject.images?.length > 0 ? (
+
+                <div className="modal-images">
+                  {activeProject.images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`${activeProject.title} ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+              ) : (
+
+                <span>
+                  {activeProject.icon}
+                </span>
+
+              )}
+
+            </div>
+
+
+            <div className="modal-body">
+
+              <span className="section-label">
+                {activeProject.categoryLabel}
+              </span>
+
+              <h2>
+                {activeProject.title}
+              </h2>
+
+              <p>
+                {activeProject.description}
+              </p>
+
+              {activeProject.features && (
+                <div className="modal-features">
+
+                  <h3>Key Features</h3>
+
+                  <ul>
+                    {activeProject.features.map((feature) => (
+                      <li key={feature}>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                </div>
+              )}
+
+              <div className="modal-technologies">
+
+                {activeProject.technologies.map((tech) => (
+                  <span key={tech}>
+                    {tech}
+                  </span>
+                ))}
+
+              </div>
+
+              {activeProject.liveUrl && (
+                <a
+                  href={activeProject.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-primary"
+                >
+                  View Live Website →
+                </a>
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
     </div>
   )
 }
