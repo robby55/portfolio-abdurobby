@@ -63,9 +63,8 @@ function App() {
 
             <a
               href="/CV-Mochammad-Abdurobby.pdf"
-              className="nav-cv"
-              target="_blank"
-              rel="noreferrer"
+              className="btn btn-primary"
+              download
             >
               Download CV
             </a>

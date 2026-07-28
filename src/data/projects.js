@@ -4,6 +4,7 @@ import warehouseScanner from '../assets/projects/warehouse-scanner.png'
 import approvalSystem from '../assets/projects/approval-system.png'
 import productionMonitoring from '../assets/projects/production-monitoring.png'
 import companyProfile from '../assets/projects/company-profile.png'
+import dyeingDashboard from '../assets/projects/production-pewarnaan.png'
 
 const projects = [
   {
@@ -158,6 +159,39 @@ const projects = [
     icon: '🌐',
     liveUrl: 'https://paiho.co.id/',
     
+  },
+
+  {
+    id: 6,
+    title: 'Manufacturing Production Dashboard',
+    category: 'Manufacturing',
+    categoryLabel: 'MANUFACTURING',
+
+    description:
+      'Real-time manufacturing dashboard for monitoring dyeing production, machine utilization, production progress, operator activities, and operational performance.',
+
+    features: [
+      'Real-time production monitoring',
+      'Machine utilization dashboard',
+      'Production progress tracking',
+      'Operator assignment monitoring',
+      'Production efficiency monitoring',
+      'Production output visualization',
+      'Production status by machine',
+      'TV dashboard for manufacturing floor',
+    ],
+
+    technologies: [
+      'Laravel',
+      'JavaScript',
+      'Microsoft SQL Server',
+    ],
+
+    images: [
+      dyeingDashboard,
+    ],
+
+    icon: '🏭',
   },
 ]
 
